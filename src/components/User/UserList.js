@@ -1,19 +1,34 @@
-import React, { Fragment, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Useritem from './UserItem';
 import classes from "./UserList.module.css"
 import DisplayUserDetails from './DisplayUserDetails';
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import getUsers from '../../store/custom-actions/get-user-data';
+import Pagination from '../UI/Pagination';
+import { createPortal } from "react-dom"
 
 const Userlist = () => {
-    console.log("re-rendered");
-    const userData = useSelector(state => state.user.users);
+    const userData = useSelector(state => state.user);
     const [displayCard, setDisplayCard] = useState(null);
+    const [currentPage, setCurrentPage] = useState(1)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getUsers(currentPage))
+    }, [dispatch, currentPage])
+
+    const changePageHandler = (e) => {
+        if (e.target.value !== currentPage) {
+            setCurrentPage(e.target.value)
+        }
+    }
 
     const showCard = (data) => {
         setDisplayCard(data)
     }
     return (
-        <Fragment>
+        <div>
             <div className={classes['list-wrapper']}>
                 <div className={classes['listHeader']}>
                     <div className={classes['name']}>Name</div>
@@ -21,7 +36,7 @@ const Userlist = () => {
                     <div className={classes['access']}>Access</div>
                 </div>
                 <div className={classes["user-list"]}>
-                    {userData.map(ele => {
+                    {userData.users.map(ele => {
                         return (<Useritem key={ele.id} showCard={showCard} data={ele} />)
                     })}
                 </div>
@@ -30,7 +45,8 @@ const Userlist = () => {
             <div>
                 {displayCard !== null && <DisplayUserDetails data={displayCard} />}
             </div>
-        </Fragment>
+            {createPortal(<Pagination itemPerPage={6} totalItem={userData.totalUsers} changePageHandler={changePageHandler} />, document.getElementById("pagination"))}
+        </div>
     )
 }
 
