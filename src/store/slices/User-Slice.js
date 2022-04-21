@@ -1,10 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit"
 
+//This will be initial Data for the user slice
 const initialData = {
     users: [],
     totalUsers: 0
 }
 
+//This is Slice which will handle the user Data as a state
 const userSlice = createSlice({
     initialState: initialData,
     name: 'users',

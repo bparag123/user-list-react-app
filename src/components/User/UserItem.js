@@ -7,14 +7,17 @@ import userSlice from '../../store/slices/User-Slice';
 const Useritem = ({ data, showCard }) => {
     const dispatch = useDispatch()
 
+    //Change Card visibility
     const onHover = useCallback(() => {
         showCard(data)
     }, [data, showCard])
 
+    //Change Card visibility
     const onHoverOut = useCallback(() => {
         showCard(null)
     }, [showCard])
 
+    //dispatch user action when the user clicks delete
     const deleteHandler = () => {
         dispatch(userSlice.actions.delete({ id: data.id }))
     }

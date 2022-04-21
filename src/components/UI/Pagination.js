@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from "./Pagination.module.css"
 
+//This is custom Pagination component
 const Pagination = ({ itemPerPage, totalItem, changePageHandler }) => {
     const totalPages = Math.ceil(totalItem / itemPerPage)
     const pageNumbers = []

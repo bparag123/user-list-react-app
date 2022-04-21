@@ -11,19 +11,21 @@ import { createPortal } from "react-dom"
 const Userlist = () => {
     const userData = useSelector(state => state.user);
     const [displayCard, setDisplayCard] = useState(null);
+    //State for Current Page Data
     const [currentPage, setCurrentPage] = useState(1)
     const dispatch = useDispatch()
 
+    //This effect will fetch data from the server when the current page state changes
     useEffect(() => {
         dispatch(getUsers(currentPage))
     }, [dispatch, currentPage])
 
+    //Changing the state current Page
     const changePageHandler = (e) => {
         if (e.target.value !== currentPage) {
             setCurrentPage(e.target.value)
         }
     }
-
     const showCard = (data) => {
         setDisplayCard(data)
     }
@@ -45,6 +47,7 @@ const Userlist = () => {
             <div>
                 {displayCard !== null && <DisplayUserDetails data={displayCard} />}
             </div>
+            {/* This is a Portal Which wil render the component at given element */}
             {createPortal(<Pagination itemPerPage={6} totalItem={userData.totalUsers} changePageHandler={changePageHandler} />, document.getElementById("pagination"))}
         </div>
     )
