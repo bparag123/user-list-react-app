@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+.listHeader {
+  display: flex;
+  justify-content: flex-start;
+  width: 80vw;
+  font-family: "Oswald", sans-serif;
+}
+
+.list-wrapper {
+  background-color: azure;
+  border-radius: 0.5rem;
+  height: 98vh;
+  padding: 1rem;
+  position: absolute;
+  overflow-y: scroll;
+  left: 5vh;
+  top: 1vh;
+}
+
+.listHeader > .name {
+  flex: 1 1 50%;
+  transform: translateX(-35%);
+}
+
+.listHeader > .status {
+  flex: 1 1 25%;
+  transform: translateX(-15px);
+}
+.listHeader > .access {
+  flex: 1 1 20%;
+  transform: translateX(-20px);
+}
+
+.user-list {
+  padding-left: 1rem;
+  width: 80vw;
+}

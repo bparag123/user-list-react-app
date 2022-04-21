@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+.user-item {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 1rem;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.05rem;
+  word-spacing: 0.09rem;
+}
+
+.img-name-email > img {
+  width: 3rem;
+  border-radius: 100%;
+}
+
+.email{
+  color: gray;
+}
+
+.name-email {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.img-name-email {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex: 1 1 50%;
+  flex-wrap: wrap;
+}
+
+.user-item > .status {
+  flex: 1 1 25%;
+}
+
+.user-item > .access {
+  flex: 1 1 20%;
+}
+
+.user-item > .del-btn{
+  flex: 1 1 5%;
+}
+
+.user-item select {
+  border: none;
+  outline: none;
+  background-color: white;
+  font-size: small;
+}
+
+.status > .active-user {
+  color: rgb(17, 184, 87);
+  font-weight: 800;
+}
